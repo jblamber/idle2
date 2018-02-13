@@ -1,0 +1,6 @@
+<span ng-if="entity.cost['cr']">
+    cr{{entity.cost['cr'] | currency}}
+</span>
+<span ng-if="entity.cost['data']">
+    {{bytes(entity.cost['data'])}}
+</span>

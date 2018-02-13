@@ -1,0 +1,135 @@
+<html>
+<head>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/jquery-mousewheel/jquery.mousewheel.js"></script>
+    <script src="bower_components/jquery.terminal/js/jquery.terminal-0.8.8.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-terminal/angular-terminal.js"></script>
+    <script src="lib/386/js/bootstrap.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="bower_components/jquery.terminal/css/jquery.terminal.css">
+    <link rel="stylesheet" type="text/css" href="lib/386/css/bootstrap.css">
+   <!-- <link rel="stylesheet" type="text/css" href="lib/386/css/bootstrap-theme.css">-->
+
+    <style type="text/css">
+        body {
+            padding-top: 20px;
+            padding-bottom: 40px;
+        }
+
+        /* Custom container */
+        .container-narrow {
+            margin: 0 auto;
+            max-width: 700px;
+        }
+        .container-narrow > hr {
+            margin: 30px 0;
+        }
+
+        /* Main marketing message and sign up button */
+        .jumbotron {
+            margin: 60px 0;
+            text-align: center;
+        }
+        .jumbotron h1 {
+            font-size: 72px;
+            line-height: 1;
+        }
+        .jumbotron .btn {
+            font-size: 21px;
+            padding: 14px 24px;
+        }
+
+        /* Supporting marketing content */
+        .marketing {
+            margin: 60px 0;
+        }
+        .marketing p + h4 {
+            margin-top: 28px;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        _386 = { onePass: true, speedFactor: 1.25 };
+    </script>
+
+    <script src="game.js"></script>
+    <div ng-app="increment" ng-controller="IncrementalCtrl">
+
+
+        <div class="container-narrow">
+
+            <div class="masthead">
+                <ul class="nav nav-pills pull-right">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+                <h3 class="muted">Startup Simulator</h3>
+            </div>
+
+            <hr>
+
+            <div class="jumbotron">
+                <div >
+                    <h2>Data: <span id="data-count">{{bytes(currencies['data'].amount)}}/
+                        <span class="text-muted">{{bytes(currencies['data'].capacity)}}</span></span></h2>
+                    <h2>Uploaded: <span id="uploaded-count">{{bytes(currencies['uploaded'].amount)}}/
+                        <span class="text-muted">{{bytes(currencies['uploaded'].capacity)}}</span></span></h2>
+                    <h2>Cash: <span id="money-count">{{(currencies['cr'].amount) | currency}}</span></h2>
+                    <!--<div angular-terminal="main"></div>-->
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="btn btn-sm btn-success" id="produce-widget" ng-click="compute()">Bit bit</div>
+
+                <h2></h2>
+
+                <div class="btn btn-default" ng-repeat="entity in purchaseables track by $index"
+                     style="margin-right: 10px"
+                     ng-if="canShow(entity, 0.8)"
+                     ng-click="purchase(entity)"
+                     ng-disabled="!canPurchase(entity)">{{entity.verb}} - <cost entity="entity"></cost></div>
+
+            </div>
+
+            <hr>
+
+            <div class="row-fluid marketing">
+                <div class="span6">
+                    <h4>Subheading</h4>
+                    <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
+
+                    <h4>Subheading</h4>
+                    <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
+
+                    <h4>Subheading</h4>
+                    <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+                </div>
+
+                <div class="span6">
+                    <h4>Subheading</h4>
+                    <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
+
+                    <h4>Subheading</h4>
+                    <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
+
+                    <h4>Subheading</h4>
+                    <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="footer">
+                <p>&copy; Company 2013</p>
+            </div>
+
+        </div> <!-- /container -->
+</div>
+</body>
+</html>
